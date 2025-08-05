@@ -125,20 +125,20 @@ class Player {
 		
 		audioEngine.connect(humPlayerNode,
 							to: humTimePitchNode,
-							format: hum.processingFormat)
+							format: nil)
 		audioEngine.connect(humTimePitchNode,
 							to: audioEngine.mainMixerNode,
-							format: hum.processingFormat)
+							format: nil)
 		
 		audioEngine.attach(whirPlayerNode)
 		audioEngine.attach(whirTimePitchNode)
 		
 		audioEngine.connect(whirPlayerNode,
 							to: whirTimePitchNode,
-							format: audioEngine.outputNode.outputFormat(forBus: 0))
+							format: nil)
 		audioEngine.connect(whirTimePitchNode,
 							to: audioEngine.mainMixerNode,
-							format: audioEngine.outputNode.outputFormat(forBus: 0))
+							format: nil)
 		
 		audioEngine.prepare()
 		
