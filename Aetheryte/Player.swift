@@ -159,7 +159,7 @@ class Player {
 		
 		humPlayerNode.scheduleFile(hum, at: nil, completionCallbackType: .dataConsumed) { _ in
 			Task.detached {
-				await self.scheduleHum()
+                self.scheduleHum()
 			}
 		}
 	}
@@ -187,7 +187,7 @@ class Player {
 		
 		whirPlayerNode.scheduleFile(randomWhir, at: nil, completionCallbackType: .dataConsumed) { _ in
 			Task.detached {
-				let nextWhirDelay = await Int.random(in: self.whirDelay.delayRange)
+				let nextWhirDelay = Int.random(in: self.whirDelay.delayRange)
 				try? await Task.sleep(for: .milliseconds(nextWhirDelay))
 				await self.scheduleWhir()
 			}
