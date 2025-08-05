@@ -52,7 +52,7 @@ struct PlayerView: View {
                             .tag(whirDelay)
                     }
                 }
-                .pickerStyle(.radioGroup)
+                .pickerStyle(.inline)
                 
                 HStack(spacing: 24) {
                     Toggle(isOn: Binding(get: { player.playHum }, set: { player.playHum = $0 })) {
