@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+	@State var player: Player? = nil
+	@State var errorMessage: String? = nil
+	
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+		if let player = player {
+			PlayerView(player: player)
+		} else if let errorMessage = errorMessage {
+			VStack {
+				Text(errorMessage)
+			}
+		} else {
+			ProgressView()
+				.task {
+					do {
+						player = try Player.init()
+					} catch {
+						errorMessage = error.localizedDescription
+					}
+				}
+		}
     }
 }
 
